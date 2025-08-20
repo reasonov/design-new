@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-info">
-          <div class="logo">Ирина Иванова</div>
+          <div class="logo">Анастасия Масликова</div>
           <p class="footer-description">
             Профессиональный дизайн интерьеров с индивидуальным подходом
           </p>
@@ -50,7 +50,7 @@
       
       <div class="footer-bottom">
         <div class="copyright">
-          &copy; {{ new Date().getFullYear() }} Ирина Иванова. Все права защищены.
+          &copy; {{ new Date().getFullYear() }} Анастасия Масликова. Все права защищены.
         </div>
       </div>
     </div>

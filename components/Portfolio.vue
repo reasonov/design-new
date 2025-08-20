@@ -179,12 +179,12 @@ onMounted(() => {
 	font-weight: 300;
 }
 
-/* Masonry Grid */
+/* Masonry Grid для десктопа */
 .portfolio-masonry {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	grid-auto-rows: 10px;
-	grid-gap: 20px;
+	grid-gap: 25px;
 	margin-bottom: 60px;
 }
 
@@ -377,24 +377,78 @@ onMounted(() => {
 	font-weight: 500;
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
+	.portfolio {
+		padding: 60px 0;
+	}
+
+	/* Переключаем на обычную сетку для мобильных */
 	.portfolio-masonry {
-		grid-template-columns: 1fr;
-		grid-gap: 15px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 16px;
+	}
+
+	.project-item {
+		margin-bottom: 0;
+		grid-row-end: auto !important;
+	}
+
+	.project-item.size-small,
+	.project-item.size-medium,
+	.project-item.size-large {
+		grid-row-end: auto !important;
+	}
+
+	/* Уменьшаем высоту изображений */
+	.project-image {
+		height: 180px;
+	}
+
+	/* Модальное окно для мобильных */
+	.modal-content {
+		width: 95%;
+		margin: 10px;
+		max-height: 95vh;
 	}
 
 	.modal-body {
 		grid-template-columns: 1fr;
 		padding: 20px;
+		gap: 20px;
 	}
 
 	.modal-image {
-		height: 250px;
+		height: 200px;
+	}
+
+	.modal-details h3 {
+		font-size: 1.5rem;
+	}
+
+	/* Убираем горизонтальный скролл */
+	.portfolio-masonry {
+		overflow-x: hidden;
+	}
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+	.project-image {
+		height: 160px;
+	}
+
+	.modal-image {
+		height: 180px;
 	}
 
 	.section-header h2 {
-		font-size: 2rem;
+		font-size: 1.8rem;
+	}
+
+	.section-header {
+		margin-bottom: 40px;
 	}
 }
 

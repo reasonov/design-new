@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 	app: {
 		baseURL: "/design-new/", // ВАЖНО: замените на имя вашего репозитория
 		head: {
-			title: "Ирина Иванова | Дизайн интерьеров",
+			title: "Анастасия Масликова | Дизайн интерьеров",
 			meta: [
 				{ charset: "utf-8" },
 				{ name: "viewport", content: "width=device-width, initial-scale=1" },

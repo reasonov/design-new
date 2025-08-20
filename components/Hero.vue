@@ -3,7 +3,9 @@
 		<div class="container hero-content">
 			<div class="hero-text">
 				<h1 class="hero-title">Создаю интерьеры, которые вдохновляют</h1>
-				<p class="hero-subtitle">Индивидуальные решения для вашего дома</p>
+				<p class="hero-subtitle">
+					Индивидуальные решения для вашего пространства
+				</p>
 				<div class="hero-buttons">
 					<a href="#portfolio" class="btn btn-primary">Смотреть работы</a>
 					<a href="#contact" class="btn btn-secondary">Связаться</a>

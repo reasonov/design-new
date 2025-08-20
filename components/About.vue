@@ -5,7 +5,7 @@
         <div class="image-wrapper">
           <NuxtImg 
             src="/images/about.jpg" 
-            alt="Ирина Иванова" 
+            alt="Анастасия Масликова" 
             class="profile-image"
           />
         </div>
@@ -18,22 +18,22 @@
         </div>
         
         <p class="about-description">
-          Я — Ирина Иванова, дизайнер интерьеров с 10-летним опытом. 
+          Я — Анастасия Масликова, дизайнер интерьеров с 15-летним опытом. 
           Создаю пространства, в которых хочется жить.
         </p>
         
         <p class="about-mission">
-          Моя цель — сделать ваш дом уютным, стильным и индивидуальным. 
+          Моя цель — сделать ваше пространство уютным, стильным и индивидуальным. 
           Каждый проект — это уникальная история, рассказанная через дизайн.
         </p>
         
         <div class="stats">
           <div class="stat-item">
-            <div class="stat-number">150+</div>
+            <div class="stat-number">200+</div>
             <div class="stat-label">Проектов</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">10</div>
+            <div class="stat-number">15</div>
             <div class="stat-label">Лет опыта</div>
           </div>
           <div class="stat-item">
@@ -44,7 +44,7 @@
         
         <div class="about-signature">
           <div class="signature-line"></div>
-          <div class="signature-name">Ирина Иванова</div>
+          <div class="signature-name">Анастасия Масликова</div>
         </div>
       </div>
     </div>

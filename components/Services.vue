@@ -12,87 +12,81 @@
 					v-for="(service, index) in services"
 					:key="index"
 					class="service-card"
-					ref="serviceCards"
 				>
-					<div class="service-icon">
-						<div class="icon-bg"></div>
-						<span class="service-number">{{ index + 1 }}</span>
+					<div class="service__wrapper">
+						<div class="service-icon">
+							<div class="icon-bg"></div>
+							<span class="service-number">{{ index + 1 }}</span>
+						</div>
+						<h3>{{ service.title }}</h3>
+						<p>{{ service.description }}</p>
+						<div class="service-features">
+							<ul>
+								<li v-for="feature in service.features" :key="feature">
+									{{ feature }}
+								</li>
+							</ul>
+						</div>
 					</div>
-					<h3>{{ service.title }}</h3>
-					<p>{{ service.description }}</p>
-					<div class="service-features">
-						<ul>
-							<li v-for="feature in service.features" :key="feature">
-								{{ feature }}
-							</li>
-						</ul>
+					<div class="service-price">
+						{{ service.price }}
 					</div>
 				</div>
+			</div>
+
+			<div class="services-note">
+				Стоимость объектов с площадью от 250 кв.м рассчитывается индивидуально
+				по договорённости.
 			</div>
 		</div>
 	</section>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
-
-const serviceCards = ref([])
-
 const services = [
 	{
-		title: "Дизайн проекты",
-		description: "Полный дизайн-проект под ваш вкус и бюджет",
+		title: "Полный дизайн-проект",
+		description:
+			"Создание уникального интерьера с нуля — от идеи до реализации",
 		features: [
-			"Планировочные решения",
+			"Чертёжная, строительная документация",
 			"3D визуализации",
-			"Спецификации материалов",
+			"Спецификация материалов",
 			"Авторский надзор",
 		],
+		price: "от 150 000 ₽",
 	},
 	{
-		title: "Ремонт под ключ",
+		title: "Мини Дизайн-проект",
 		description: "Ремонт и отделка с нашим контролем качества",
 		features: [
-			"Демонтажные работы",
-			"Черновые работы",
-			"Чистовая отделка",
-			"Уборка помещения",
+			"3D-визуализация",
+			"Строительная, чертёжная документация (Планировочные решения+планы электрики)",
+			"Спецификация материалов",
 		],
+		price: "от 80 000 ₽",
 	},
 	{
-		title: "Консультации",
+		title: "Экспресс дизайн",
 		description: "Бесплатная консультация по любым вопросам",
 		features: [
-			"Анализ пространства",
-			"Выбор стиля",
-			"Подбор материалов",
-			"Смета работ",
+			"Стилистическая карта (коллаж) с подбором материалов, мебели и оборудования в интерьере",
+			"Строительная, чертёжная документация",
+			"Спецификация материалов",
 		],
+		price: "от 50 000 ₽",
+	},
+	{
+		title: "Авторский надзор",
+		description: "Включает в себя полное сопровождение объекта",
+		features: [
+			"Выезд на объект с целью контроля строительных работ в соответствии с проектом",
+			"Встречи по подбору и приобретению материалов, мебели и оборудования",
+			"Согласование различных вопросов со всеми подрядчиками и специалистами на объекте",
+		],
+		price: "от 70 000 ₽",
 	},
 ]
-
-onMounted(() => {
-	// Анимация появления карточек при скролле
-	if (serviceCards.value.length > 0) {
-		serviceCards.value.forEach((card, index) => {
-			gsap.from(card, {
-				opacity: 0,
-				y: 30,
-				duration: 0.6,
-				delay: index * 0.2,
-				scrollTrigger: {
-					trigger: card,
-					start: "top 85%",
-					toggleActions: "play none none reverse",
-				},
-			})
-		})
-	}
-})
 </script>
 
 <style scoped>
@@ -130,11 +124,15 @@ onMounted(() => {
 
 .services-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	gap: 30px;
+	margin-bottom: 40px;
 }
 
 .service-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	background: white;
 	padding: 40px 30px;
 	border-radius: 15px;
@@ -142,7 +140,6 @@ onMounted(() => {
 	transition: all 0.3s ease;
 	border: 1px solid #e2e8f0;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-	opacity: 1; /* Важно: карточки видимы по умолчанию */
 }
 
 .service-card:hover {
@@ -180,6 +177,7 @@ onMounted(() => {
 }
 
 .service-card h3 {
+	min-height: 60px;
 	font-size: 1.4rem;
 	margin-bottom: 15px;
 	font-weight: 600;
@@ -212,6 +210,27 @@ onMounted(() => {
 	color: #a8d8ea;
 	font-weight: bold;
 	font-size: 1.2rem;
+}
+
+.service-price {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #2d3748;
+	margin-top: 20px;
+	padding-top: 15px;
+	border-top: 1px solid #e2e8f0;
+}
+
+.services-note {
+	text-align: center;
+	padding: 20px;
+	background: #f1f5f9;
+	border-radius: 15px;
+	max-width: 800px;
+	margin: 0 auto;
+	font-size: 0.95rem;
+	color: #4a5568;
+	border: 1px dashed #a8d8ea;
 }
 
 @media (max-width: 768px) {
