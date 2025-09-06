@@ -24,7 +24,18 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ["~/assets/css/main.css"],
-	modules: ["@nuxt/image"],
+	modules: ["@nuxt/image", "@nuxtjs/google-fonts", "vue3-carousel-nuxt"],
+	googleFonts: {
+		families: {
+			Montserrat: [300, 400, 500, 600, 700],
+			"Playfair+Display": [700], // если хочешь использовать Playfair Display
+		},
+		display: "swap",
+		prefetch: true,
+		preload: true,
+		download: true, // опционально: скачает шрифты в проект (работает оффлайн)
+		inject: true,
+	},
 	ssr: true,
 	target: "static",
 

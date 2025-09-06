@@ -2,7 +2,9 @@
 	<header class="header">
 		<div class="container">
 			<div class="header-content">
-				<div class="logo">Анастасия Масликова</div>
+				<div class="header__wrapper">
+					<div class="logo">Анастасия Масликова</div>
+				</div>
 				<nav class="nav">
 					<a href="#services" class="nav-link">Услуги</a>
 					<a href="#portfolio" class="nav-link">Портфолио</a>
@@ -209,5 +211,10 @@ function closeMenu() {
 	.logo {
 		font-size: 1.4rem;
 	}
+}
+
+.logo__image {
+	width: 60px;
+	height: 60px;
 }
 </style>

@@ -39,11 +39,23 @@
 				<div class="modal-content" @click.stop>
 					<button class="close-btn" @click="closeModal">&times;</button>
 					<div class="modal-body">
-						<NuxtImg
-							:src="currentProject.image"
-							:alt="currentProject.title"
-							class="modal-image"
-						/>
+						<Carousel>
+							<Slide
+								v-for="(image, index) in currentProject.images"
+								:key="index"
+							>
+								<NuxtImg
+									:src="image"
+									:alt="currentProject.title"
+									class="modal-image"
+								/>
+							</Slide>
+
+							<template #addons>
+								<Navigation />
+								<Pagination />
+							</template>
+						</Carousel>
 						<div class="modal-details">
 							<h3>{{ currentProject.title }}</h3>
 							<span class="modal-category">{{ currentProject.category }}</span>
@@ -73,7 +85,13 @@ const projects = [
 		category: "Жилое пространство",
 		description:
 			"Элегантный интерьер в современном стиле с использованием натуральных материалов",
-		image: "/images/work-1.jpg",
+		images: [
+			"/images/portfolio1/1.webp",
+			"/images/portfolio1/2.webp",
+			"/images/portfolio1/3.webp",
+			"/images/portfolio1/4.webp",
+			"/images/portfolio1/5.webp",
+		],
 		size: "large",
 		tags: ["Современный стиль", "Дуб", "Мрамор"],
 	},
@@ -81,7 +99,12 @@ const projects = [
 		title: "Классическая кухня",
 		category: "Кухонное пространство",
 		description: "Уютная кухня в классическом стиле с индивидуальным дизайном",
-		image: "/images/work-2.jpg",
+		images: [
+			"/images/portfolio2/1.webp",
+			"/images/portfolio2/2.webp",
+			"/images/portfolio2/3.webp",
+			"/images/portfolio2/4.webp",
+		],
 		size: "small",
 		tags: ["Классика", "Белый дуб", "Гранит"],
 	},
@@ -89,7 +112,13 @@ const projects = [
 		title: "Минималистичная спальня",
 		category: "Спальня",
 		description: "Спальня в минималистичном стиле с акцентом на комфорт",
-		image: "/images/work-3.jpg",
+		images: [
+			"/images/portfolio3/1.webp",
+			"/images/portfolio3/2.webp",
+			"/images/portfolio3/3.webp",
+			"/images/portfolio1/4.webp",
+			"/images/portfolio1/5.webp",
+		],
 		size: "medium",
 		tags: ["Минимализм", "Текстиль", "Свет"],
 	},
@@ -97,7 +126,13 @@ const projects = [
 		title: "Детская комната",
 		category: "Детское пространство",
 		description: "Яркая и функциональная детская комната",
-		image: "/images/work-4.jpg",
+		images: [
+			"/images/portfolio4/1.webp",
+			"/images/portfolio4/2.webp",
+			"/images/portfolio1/3.webp",
+			"/images/portfolio1/4.webp",
+			"/images/portfolio1/5.webp",
+		],
 		size: "small",
 		tags: ["Дети", "Цвет", "Функциональность"],
 	},
@@ -105,7 +140,13 @@ const projects = [
 		title: "Офисное пространство",
 		category: "Коммерческий проект",
 		description: "Современный офис с элементами лофта",
-		image: "/images/work-5.jpg",
+		images: [
+			"/images/portfolio5/1.webp",
+			"/images/portfolio5/2.webp",
+			"/images/portfolio5/3.webp",
+			"/images/portfolio5/4.webp",
+			"/images/portfolio5/5.webp",
+		],
 		size: "large",
 		tags: ["Офис", "Лофт", "Стекло"],
 	},
@@ -113,7 +154,13 @@ const projects = [
 		title: "Ванная комната",
 		category: "Санузел",
 		description: "Элегантная ванная комната с мраморной отделкой",
-		image: "/images/work-6.jpg",
+		images: [
+			"/images/portfolio6/1.webp",
+			"/images/portfolio6/2.webp",
+			"/images/portfolio6/3.webp",
+			"/images/portfolio6/4.webp",
+			"/images/portfolio6/5.webp",
+		],
 		size: "medium",
 		tags: ["Санузел", "Мрамор", "Хром"],
 	},

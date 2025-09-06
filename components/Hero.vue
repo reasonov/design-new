@@ -22,16 +22,17 @@ import { gsap } from "gsap"
 onMounted(() => {
 	gsap.from(".hero-text", {
 		opacity: 0,
-		y: 50,
-		duration: 1,
-		ease: "power2.out",
+		y: 60,
+		duration: 1.2,
+		ease: "back.out(1.2)",
+		stagger: 0.3,
 	})
 })
 </script>
 
 <style scoped>
 .hero {
-	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
 		url("/images/hero-bg.jpg") no-repeat center center/cover;
 	height: 100vh;
 	display: flex;
@@ -51,19 +52,27 @@ onMounted(() => {
 }
 
 .hero-title {
-	font-size: 3.5rem;
+	font-size: 3.8rem;
 	margin-bottom: 20px;
-	font-weight: 600;
-	line-height: 1.2;
-	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	font-weight: 700;
+	line-height: 1.15;
+	background: linear-gradient(135deg, #ffffff, #e0f7fa, #b2ebf2);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+	letter-spacing: -0.5px;
+	font-family: "Montserrat", sans-serif;
 }
 
 .hero-subtitle {
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 	margin-bottom: 40px;
-	color: rgba(255, 255, 255, 0.95);
+	color: #ffffff;
 	font-weight: 300;
-	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+	letter-spacing: 0.5px;
+	opacity: 0.98;
 }
 
 .hero-buttons {
@@ -75,47 +84,70 @@ onMounted(() => {
 
 .btn {
 	display: inline-block;
-	padding: 15px 35px;
-	border-radius: 30px;
+	padding: 16px 38px;
+	border-radius: 32px;
 	text-decoration: none;
 	font-weight: 500;
-	font-size: 1.1rem;
-	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	font-size: 1.12rem;
+	transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 	border: 2px solid transparent;
 	position: relative;
 	overflow: hidden;
+	backface-visibility: hidden;
+	transform: translateZ(0);
+}
+
+.btn::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1px;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.4);
+	border-radius: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	transition: transform 0.8s ease-out;
+	z-index: -1;
+}
+
+.btn:active::after {
+	transform: translate(-50%, -50%) scale(100);
 }
 
 .btn-primary {
 	background: #a8d8ea;
-	color: #2d3748;
-	box-shadow: 0 5px 15px rgba(168, 216, 234, 0.3);
+	color: #1a3e5d;
+	box-shadow: 0 6px 18px rgba(168, 216, 234, 0.4);
 }
 
 .btn-primary:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 8px 25px rgba(168, 216, 234, 0.4);
+	transform: translateY(-4px);
+	box-shadow: 0 10px 30px rgba(168, 216, 234, 0.55);
+	filter: brightness(1.05);
 }
 
 .btn-secondary {
 	background: transparent;
 	color: white;
-	border-color: rgba(255, 255, 255, 0.8);
+	border-color: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(4px);
 }
 
 .btn-secondary:hover {
-	background: rgba(255, 255, 255, 0.15);
-	transform: translateY(-3px);
+	background: rgba(255, 255, 255, 0.12);
+	transform: translateY(-4px);
 	border-color: white;
+	box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 768px) {
 	.hero-title {
-		font-size: 2.5rem;
+		font-size: 2.7rem;
 	}
 
 	.hero-subtitle {
-		font-size: 1.1rem;
+		font-size: 1.15rem;
 	}
 
 	.hero-buttons {
@@ -124,8 +156,8 @@ onMounted(() => {
 	}
 
 	.btn {
-		width: 80%;
-		max-width: 250px;
+		width: 85%;
+		max-width: 260px;
 	}
 }
 </style>
